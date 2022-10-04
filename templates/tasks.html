@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 ver">
+      <h1 class="text-center display-3 py-5">Tasks {{estute}}</h1>
+      {% for task in tasks %}
+      <ul class="list-group">
+        <a class="list-group-item " href="{% url 'task_detail' task.id %}">
+          <header class="d-flex justify-content-between">
+            {% if task.important %}
+          <h1 class="fw-bold text-success">{{task.title}}</h1>
+          {% else %}
+          <h1 class="fw-bold" >{{task.title}}</h1>
+          {% endif %}
+          <p>{{task.user.username}}</p>
+          <h4>{{task.datecomplete|date:"M j Y:i"}}</h4>
+          </header>
+        </a>
+      </ul>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+ {% endblock %}
